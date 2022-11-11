@@ -1,0 +1,8 @@
+.pagetitle {
+    width:400px;
+    border-bottom: 2px solid black;
+}
+
+.pagetitle h2{
+    margin-bottom: 0px;
+}
