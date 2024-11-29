@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Linda's Blog | Gallery - Other</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page-container">
+      <div style="width: 100%; max-width: 1200px">
+        <div class="nav-bar">
+          <div class="nav-section">
+            <h4>
+              <a class="nav-item" href="../index.html">Home</a>
+            </h4>
+            <h4>
+              <a class="nav-item" href="../gallery.html"><strong>Gallery</strong></a>
+            </h4>
+            <h4>
+              <a class="nav-item" href="../contact.html">Contact</a>
+            </h4>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: start; width: 100%">
+          <div style="display: flex; flex-direction: column; align-items: start; width: 100%;">
+            <div class="section-heading">
+              <h2 style="font-size: 36px; margin-bottom: 0;">
+                Gallery
+                <span style="font-size: 24px; font-weight: normal; margin-left: 10px;">
+                  Other
+                </span>
+              </h2>
+            </div>
+            <a href="../gallery.html">
+              <h4 style="font-size: 16px; padding-left: 20px; margin: 0px">
+                &lt; Back
+              </h4>
+            </a>
+
+            <div class="gallery-container">
+              <div class="grid-container">
+                <div class="grid-item">
+                  <img
+                    src="images/other/presentation.JPG"
+                    alt="Beach"
+                    data-description="A serene view of the beach."
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="image-modal">
+      <div class="modal-content">
+        <img id="modal-image" src="" alt="Modal Image" />
+        <p class="modal-description" id="modal-description"></p>
+      </div>
+      <!-- Close Button -->
+      <span class="close" id="close-modal">&times;</span>
+      <!-- Navigation Arrows -->
+      <span class="arrow left-arrow" id="left-arrow">&#10094;</span>
+      <span class="arrow right-arrow" id="right-arrow">&#10095;</span>
+    </div>
+    
+    <script>
+      // Select all images and modal elements
+      const images = document.querySelectorAll('.grid-item img');
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const modalDescription = document.getElementById('modal-description');
+      const closeModal = document.getElementById('close-modal');
+      const leftArrow = document.getElementById('left-arrow');
+      const rightArrow = document.getElementById('right-arrow');
+
+      let currentIndex = 0; // Track the current image index
+
+      // Function to open modal
+      const openModal = (index) => {
+          currentIndex = index;
+          const image = images[currentIndex];
+          modal.style.display = 'flex'; // Show modal
+          modalImage.src = image.src; // Set modal image source
+          modalDescription.textContent = image.dataset.description; // Set modal description
+      };
+
+      // Function to close modal
+      const closeModalHandler = () => {
+          modal.style.display = 'none'; // Hide modal
+      };
+
+      // Function to navigate to the previous image
+      const showPreviousImage = () => {
+          currentIndex = (currentIndex - 1 + images.length) % images.length; // Loop back if at start
+          openModal(currentIndex);
+      };
+
+      // Function to navigate to the next image
+      const showNextImage = () => {
+          currentIndex = (currentIndex + 1) % images.length; // Loop back if at end
+          openModal(currentIndex);
+      };
+
+      // Event listeners for each image to open the modal
+      images.forEach((image, index) => {
+          image.addEventListener('click', () => openModal(index));
+      });
+
+      // Event listener for closing the modal
+      closeModal.addEventListener('click', closeModalHandler);
+
+      // Event listeners for navigation arrows
+      leftArrow.addEventListener('click', showPreviousImage);
+      rightArrow.addEventListener('click', showNextImage);
+
+      // Close modal when clicking outside the content
+      window.addEventListener('click', (event) => {
+          if (event.target === modal) {
+              closeModalHandler();
+          }
+      });
+
+      // Keyboard navigation (optional)
+      window.addEventListener('keydown', (event) => {
+          if (modal.style.display === 'flex') {
+              if (event.key === 'ArrowLeft') showPreviousImage();
+              if (event.key === 'ArrowRight') showNextImage();
+              if (event.key === 'Escape') closeModalHandler();
+          }
+      });
+    </script>
+  </body>
+</html>
