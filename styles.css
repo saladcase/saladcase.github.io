@@ -1,6 +1,7 @@
 body {
   font-family: "IBM Plex Sans", sans-serif;
   padding: 0 50px;
+  margin: 0;
 }
 
 h3 {
@@ -11,7 +12,13 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.page-content {
+  width: 100%;
+  max-width: 1200px;
+  padding-bottom: 50px;
 }
 
 .section-heading {
@@ -100,7 +107,7 @@ h3 {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
+  grid-template-columns: repeat(4, 1fr); /* 3 columns with equal width */
   gap: 8px; /* Space between tiles */
   padding: 16px;
   width: 100%; /* Ensure the grid spans the full width of the container */
@@ -214,6 +221,23 @@ h3 {
   color: #ccc; /* Change color smoothly */
   transform: translateY(-50%) scale(1.3); /* Grow arrow by 20% on hover */
 }
+
+.see-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  cursor: pointer;
+  user-select: none;
+  color: #000;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.see-more:hover {
+  color: #aaa; /* Change color smoothly */
+  transform: scale(1.2); /* Grow arrow by 20% on hover */
+}
+
 
 /* Close button positioned outside the modal content */
 .close {
