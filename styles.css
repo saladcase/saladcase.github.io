@@ -163,7 +163,7 @@ h3 {
   border-radius: 8px;
   text-align: center;
   width: 80%; /* Fixed width (as a percentage of the viewport) */
-  max-width: 750px; /* Maximum width for larger screens */
+  max-width: 850px; /* Maximum width for larger screens */
   height: auto; /* Maintain height proportional to content */
   max-height: 80%; /* Ensure modal doesn't exceed viewport height */
   overflow: hidden; /* Prevent content overflow */
@@ -210,11 +210,11 @@ h3 {
 }
 
 .left-arrow {
-  left: calc(50% - 450px);
+  left: calc(50% - 500px);
 }
 
 .right-arrow {
-  right: calc(50% - 450px);
+  right: calc(50% - 500px);
 }
 
 .arrow:hover {
@@ -243,7 +243,7 @@ h3 {
 .close {
   position: absolute;
   top: calc(50% - 365px); /* Position above the modal with a 15px gap */
-  right: calc(50% - 465px); /* Place outside and above */
+  right: calc(50% - 520px); /* Place outside and above */
   font-size: 48px;
   font-weight: bold;
   color: white;
